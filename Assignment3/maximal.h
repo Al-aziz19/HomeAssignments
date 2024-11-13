@@ -1,3 +1,5 @@
+//Raimberdiyev Aziz st135793@student.spbu.ru
+///Transformer Class Inheritance
 #ifndef MAXIMAL_H
 #define MAXIMAL_H
 
@@ -5,10 +7,12 @@
 
 class Maximal : public Transformer {
 public:
-    Maximal();
-    ~Maximal();
+    Maximal(const std::string& name)
+        : Transformer(name, "Maximal") {}
 
-    bool shield();
+    virtual ~Maximal() = default; // Используем деструктор по умолчанию
+
+    void transform() override; // Переопределяем чисто виртуальный метод
 };
 
 #endif // MAXIMAL_H

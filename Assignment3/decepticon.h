@@ -1,12 +1,26 @@
+//Raimberdiyev Aziz st135793@student.spbu.ru
+///Transformer Class Inheritance
 #ifndef DECEPTICON_H
 #define DECEPTICON_H
 
-class Decepticon : public Transformer {
-public:
-    Decepticon();
-    ~Decepticon();
+#include "transformer.h"
+#include "Weapon.h"
 
-    bool sabotage();
+class Decepticon : public Transformer {
+private:
+    Weapon weapon;
+
+public:
+    Decepticon(const std::string& name, const std::string& weaponType)
+        : Transformer(name, "Decepticon"), weapon(weaponType) {}
+
+    virtual ~Decepticon() = default;
+
+    bool sabotage(); 
+
+    void transform() override; 
+
+    void useWeapon() const;
 };
 
 #endif // DECEPTICON_H

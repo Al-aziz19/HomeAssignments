@@ -1,32 +1,67 @@
-#include <gtest/gtest.h>
-#include "transformer.h"
+//Raimberdiyev Aziz st135793@student.spbu.ru
+///Transformer Class Inheritance
 #include "autobot.h"
 #include "decepticon.h"
 #include "maximal.h"
+#include <gtest/gtest.h>
 
-TEST(TransformerTest, MoveTest) {
-    Transformer transformer;
-    EXPECT_TRUE(transformer.move());
+// Тесты для класса Autobot
+TEST(TransformerTest, AutobotTransform) {
+    Autobot autobot("Optimus Prime", "Sword");
+    testing::internal::CaptureStdout();
+    autobot.transform();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Optimus Prime is transforming!\n");
 }
 
-TEST(TransformerTest, FireTest) {
-    Transformer transformer;
-    EXPECT_TRUE(transformer.fire());
+TEST(TransformerTest, AutobotUseWeapon) {
+    Autobot autobot("Optimus Prime", "Sword");
+    testing::internal::CaptureStdout();
+    autobot.useWeapon();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Using weapon: Sword\n");
 }
 
-TEST(AutobotTest, AssistTest) {
-    Autobot autobot;
-    EXPECT_TRUE(autobot.assist());
+TEST(TransformerTest, AutobotAssist) {
+    Autobot autobot("Optimus Prime", "Sword");
+    testing::internal::CaptureStdout();
+    autobot.assist();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Optimus Prime is assisting!\n");
 }
 
-TEST(DecepticonTest, SabotageTest) {
-    Decepticon decepticon;
-    EXPECT_TRUE(decepticon.sabotage());
+// Тесты для класса Decepticon
+TEST(TransformerTest, DecepticonTransform) {
+    Decepticon decepticon("Megatron", "Cannon");
+    testing::internal::CaptureStdout();
+    decepticon.transform();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Megatron is transforming!\n");
 }
 
-TEST(MaximalTest, ShieldTest) {
-    Maximal maximal;
-    EXPECT_TRUE(maximal.shield());
+TEST(TransformerTest, DecepticonUseWeapon) {
+    Decepticon decepticon("Megatron", "Cannon");
+    testing::internal::CaptureStdout();
+    decepticon.useWeapon();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Using weapon: Cannon\n");
+}
+
+TEST(TransformerTest, DecepticonSabotage) {
+    Decepticon decepticon("Megatron", "Cannon");
+    testing::internal::CaptureStdout();
+    decepticon.sabotage();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Megatron is sabotaging!\n");
+}
+
+// Тесты для класса Maximal
+TEST(TransformerTest, MaximalTransform) {
+    Maximal maximal("Optimus Primal");
+    testing::internal::CaptureStdout();
+    maximal.transform();
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(output, "Optimus Primal is transforming!\n");
 }
 
 int main(int argc, char **argv) {

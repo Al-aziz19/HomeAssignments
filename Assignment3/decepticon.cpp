@@ -1,17 +1,15 @@
 #include "decepticon.h"
 #include <iostream>
 
-Decepticon::Decepticon() {
-    std::cout << "Decepticon created.\n";
-}
-
-
-Decepticon::~Decepticon() {
-    std::cout << "Decepticon destroyed.\n";
-}
-
-
 bool Decepticon::sabotage() {
-    std::cout << "Decepticon sabotage.\n";
+    std::cout << name << " is sabotaging!" << std::endl;
     return true;
+}
+
+void Decepticon::transform() {
+    std::cout << name << " is transforming!" << std::endl;
+}
+
+void Decepticon::useWeapon() const {
+    weapon.use();
 }
