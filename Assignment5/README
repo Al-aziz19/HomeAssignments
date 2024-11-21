@@ -1,0 +1,11 @@
+# Assigment5
+## Author
+**Раимбердиев Азиз, группа 24.Б83-мм**
+## Contacts
+st135793@student.spbu.ru
+## Description
+вывод который демонстрирует работу методов для каждого трансформера.
+## Build
+make
+## Run
+./main
