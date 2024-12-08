@@ -1,29 +1,38 @@
-#include <iostream>
-#include <fstream>
-#include <filesystem>
+// Raimberdiyev Aziz 
+//input.bin project
+#include<iostream>
+#include<fstream>
 
 int main() {
-    std::string input_file = "input.bin";
-    std::string output_file = "output.bin";
+    std::ifstream inputFile("input.bin" , std::ios::binary);
+    if (!inputFile.is_open()) {
+        std::cout<< "Error opening file input.bin" << std::endl;
+        return 1;
+}
+    
+    inputFile.seekg(0, std::ios::end);
+    int fileSize = inputFile.tellg();
+    inputFile.seekg(0, std::ios::beg);
 
-    std::size_t file_size = std::filesystem::file_size(input_file);
+    
+    char* data = new char[fileSize];
 
-    char* buffer = new char[file_size];
 
-    std::ifstream infile(input_file, std::ios::binary);
-    std::ofstream outfile(output_file, std::ios::binary);
+    inputFile.read(data, fileSize);
+    inputFile.close();
 
-    infile.read(buffer, file_size);
 
-    for (std::size_t i = 0; i < file_size / 2; ++i) {
-        std::swap(buffer[i],buffer[file_size - i - 1]);
+
+    for (int i = 0 ; i < fileSize / 2; ++i) {
+        std::swap(data[i], data[fileSize - i - 1]);
     }
 
-    outfile.write(buffer, file_size);
 
-    delete[] buffer;
+    std::ofstream outputFile("output.bin", std::ios::binary);
+    outputFile.write(data, fileSize);
+    outputFile.close();
 
-    infile.close();
-    outfile.close();
-     return 0;
+    delete[] data;
+    return 0;
 }
+    

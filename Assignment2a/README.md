@@ -1,4 +1,4 @@
-# Assignmeny2a
+# Assignment2a
 ## Author
 Раимбердиев Азиз Фархатович, группа 24.Б83-мм
 ## Contracts
