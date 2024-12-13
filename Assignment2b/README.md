@@ -8,4 +8,4 @@ Home Assignment2b
 ## Build
 make
 ## Run
-./main
+./rpn_calculator

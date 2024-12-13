@@ -1,13 +1,21 @@
 CXX = g++
-CXXFLAGS = -Wall -std=c++11 
-BINARY = postfix
+CXXFLAGS = -Wall -Werror -Wpedantic -std=c++17
 
-.PHONY: all clean
+TARGET = rpn_calculator
 
-all: $(BINARY)
+SRCS = main.cpp
 
-$(BINARY): main.cpp
-	$(CXX) $(CXXFLAGS) -o $(BINARY) main.cpp
+OBJS = $(SRCS:.cpp=.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+$(OBJS): $(SRCS)
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
-	rm -f $(BINARY)
+	rm -f $(OBJS) $(TARGET)
+
+.PHONY: all clean
