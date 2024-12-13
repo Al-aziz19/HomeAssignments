@@ -4,23 +4,27 @@
 #define DECEPTICON_H
 
 #include "transformer.h"
-#include "Weapon.h"
 
 class Decepticon : public Transformer {
 private:
-    Weapon weapon;
+    bool isAirborne;
+    int deceitLevel;
 
 public:
-    Decepticon(const std::string& name, const std::string& weaponType)
-        : Transformer(name, "Decepticon"), weapon(weaponType) {}
+    Decepticon(const std::string& name, int powerLevel, int speed, Weapon* weapon, bool isAirborne, int deceitLevel)
+        : Transformer(name, "Decepticon", powerLevel, speed, weapon), isAirborne(isAirborne), deceitLevel(deceitLevel) {}
 
-    virtual ~Decepticon() = default;
+    // Get методы
+    bool getIsAirborne() const { return isAirborne; }
+    int getDeceitLevel() const { return deceitLevel; }
 
-    bool sabotage(); 
+    // Set методы
+    void setIsAirborne(bool isAirborne) { this->isAirborne = isAirborne; }
+    void setDeceitLevel(int deceitLevel) { this->deceitLevel = deceitLevel; }
 
-    void transform() override; 
-
-    void useWeapon() const;
+    // Методы
+    void transform() const override { return; }
+    void attack() const override { return; }
 };
 
 #endif // DECEPTICON_H

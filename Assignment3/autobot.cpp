@@ -1,17 +1,19 @@
 //Raimberdiyev Aziz st135793@student.spbu.ru
 ///Transformer Class Inheritance
 #include "autobot.h"
-#include <iostream>
 
 bool Autobot::assist() {
-    std::cout << name << " is assisting!" << std::endl;
     return true;
 }
 
-void Autobot::transform() {
-    std::cout << name << " is transforming!" << std::endl;
+void Autobot::transform() const {
+    return;
+}
+
+void Autobot::attack() const {
+    return;
 }
 
 void Autobot::useWeapon() const {
-    weapon.use();
+    return;
 }

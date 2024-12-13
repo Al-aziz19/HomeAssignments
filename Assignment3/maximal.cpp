@@ -3,6 +3,6 @@
 #include "maximal.h"
 #include <iostream>
 
-void Maximal::transform() {
+void Maximal::transformer() {
     std::cout << name << " is transforming!" << std::endl;
 }

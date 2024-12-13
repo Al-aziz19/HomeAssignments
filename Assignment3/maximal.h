@@ -6,13 +6,25 @@
 #include "transformer.h"
 
 class Maximal : public Transformer {
+private:
+    std::string animalForm;
+    bool isStealth;
+
 public:
-    Maximal(const std::string& name)
-        : Transformer(name, "Maximal") {}
+    Maximal(const std::string& name, int powerLevel, int speed, Weapon* weapon, const std::string& animalForm, bool isStealth)
+        : Transformer(name, "Maximal", powerLevel, speed, weapon), animalForm(animalForm), isStealth(isStealth) {}
 
-    virtual ~Maximal() = default; // Используем деструктор по умолчанию
+    // Get методы
+    std::string getAnimalForm() const { return animalForm; }
+    bool getIsStealth() const { return isStealth; }
 
-    void transform() override; // Переопределяем чисто виртуальный метод
+    // Set методы
+    void setAnimalForm(const std::string& animalForm) { this->animalForm = animalForm; }
+    void setIsStealth(bool isStealth) { this->isStealth = isStealth; }
+
+    // Методы
+    void transform() const override { return; }
+    void attack() const override { return; }
 };
 
 #endif // MAXIMAL_H

@@ -4,22 +4,28 @@
 #define AUTOBOT_H
 
 #include "transformer.h"
-#include "Weapon.h"
 
 class Autobot : public Transformer {
 private:
-    Weapon weapon;
+    std::string leader;
+    bool isElite;
 
 public:
-    Autobot(const std::string& name, const std::string& weaponType)
-        : Transformer(name, "Autobot"), weapon(weaponType) {}
+    Autobot(const std::string& name, int powerLevel, int speed, Weapon* weapon, const std::string& leader, bool isElite)
+        : Transformer(name, "Autobot", powerLevel, speed, weapon), leader(leader), isElite(isElite) {}
 
-    virtual ~Autobot() = default; 
+    // Get методы
+    std::string getLeader() const { return leader; }
+    bool getIsElite() const { return isElite; }
 
-    bool assist(); 
+    // Set методы
+    void setLeader(const std::string& leader) { this->leader = leader; }
+    void setIsElite(bool isElite) { this->isElite = isElite; }
 
-    void transform() override; 
-
+    // Методы
+    void transform() const override;
+    void attack() const override;
+    bool assist();
     void useWeapon() const;
 };
 

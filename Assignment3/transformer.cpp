@@ -2,29 +2,23 @@
 ///Transformer Class Inheritance
 #include "transformer.h"
 
-// Реализация методов
-
-bool Transformer::move() {
-    // Реализация функции move
+// Реализация методов Transformer
+bool Transformer::move() const {
     return true;
 }
 
-bool Transformer::turn(Direction dir) {
-    // Реализация функции turn
+bool Transformer::turn(Direction dir) const {
     return true;
 }
 
-bool Transformer::jump() {
-    // Реализация функции jump
+bool Transformer::jump() const {
     return true;
 }
 
-bool Transformer::fire() {
-    // Реализация функции fire
+bool Transformer::fire() const {
     return true;
 }
 
-bool Transformer::ultimate() {
-    // Реализация функции ultimate
+bool Transformer::ultimate() const {
     return true;
 }
