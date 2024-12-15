@@ -1,33 +1,27 @@
-
 CXX = g++
-CXXFLAGS = -Wall -Werror -Wpedantic -std=c++17
+CXXFLAGS = -std=c++17 -Wall -I/usr/include -pthread
+GTEST_DIR = ~/googletest/googletest/build/lib
 
-SRCS = main.cpp transformer.cpp autobot.cpp decepticon.cpp maximal.cpp
-OBJS = $(SRCS:.cpp=.o)
+SRC = Transformers.cpp Autobots.cpp Desepticons.cpp MiniRobots.cpp
+OBJ = $(SRC:.cpp=.o)
 
-TARGET = main
+TEST_SRC = allclassestesting.cpp
+TEST_OBJ = $(TEST_SRC:.cpp=.o)
+
+TARGET = allclasses_test
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+$(TARGET): $(OBJ) $(TEST_OBJ)
+	$(CXX) $(OBJ) $(TEST_OBJ) -o $(TARGET) -L$(GTEST_DIR) -lgtest -lgtest_main -lpthread
 
-main.o: main.cpp transformer.h autobot.h decepticon.h maximal.h
-	$(CXX) $(CXXFLAGS) -c main.cpp
-
-transformer.o: transformer.cpp transformer.h
-	$(CXX) $(CXXFLAGS) -c transformer.cpp
-
-autobot.o: autobot.cpp autobot.h transformer.h
-	$(CXX) $(CXXFLAGS) -c autobot.cpp
-
-decepticon.o: decepticon.cpp decepticon.h transformer.h
-	$(CXX) $(CXXFLAGS) -c decepticon.cpp
-
-maximal.o: maximal.cpp maximal.h transformer.h
-	$(CXX) $(CXXFLAGS) -c maximal.cpp
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJ) $(TEST_OBJ) $(TARGET)
 
-.PHONY: all clean
+
+test: $(OBJ) $(TEST_OBJ)
+	$(CXX) $(OBJ) $(TEST_OBJ) -o $(TARGET) -L$(GTEST_DIR) -lgtest -lgtest_main -lpthread
+		./$(TARGET)
