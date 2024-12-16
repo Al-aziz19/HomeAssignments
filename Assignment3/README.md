@@ -8,4 +8,4 @@ st135793@student.spbu.ru
 ## Build
 make
 ## Run
-./test_transformer
+./allclasses_test
